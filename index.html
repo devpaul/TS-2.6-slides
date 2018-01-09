@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TypeScript 2.6+ Features</title>
+
+	<meta name="description" content="Features added in TypeScript 2.5, 2.6, and 2.7">
+	<meta name="author" content="Paul Shannon">
+
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/css/theme/sky.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+	<link rel="stylesheet" href="resources/main.css">
+
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+
+<div class="reveal">
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<h2>What's new in TypeScript?</h2>
+			<h3>TypeScript 2.5, 2.6, and 2.7</h3>
+		</section>
+
+		<section>
+			<h2>Hello!</h2>
+
+			<div class="two-column">
+				<div>
+					<h3>Paul Shannon</h3>
+					<img src="./images/sitepen.png" class="removeFormatting">
+				</div>
+				<div>
+					<ul>
+						<li>Sr Engineer @ SitePen</li>
+						<li>Co-maintainer of Intern</li>
+						<li>SitePen Podcast</li>
+						<li>Phoenix TypeScript</li>
+						<li class="github no-style"><a href="https://github.com/devpaul">devpaul</a></li>
+						<li class="twitter no-style"><a href="https://twitter.com/developerPaul">@developerPaul</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h3>So what's been going on?</h3>
+
+			<p class="fragment">TypeScript is maturing as a language.</p>
+
+			<p class="fragment">Focus has largely been on improved tooling and IDE integration</p>
+		</section>
+
+		<section>
+			<h2><img src="./images/new.png" class="removeFormatting" style="height: 1em"> Language Services</h2>
+			<h3>(Improved IDE integration)</h3>
+		</section>
+
+		<section>
+			<h3>Extract Function and Extract Method</h3>
+
+			<p>TS language services supports extracting functions and methods from code</p>
+			<aside class="notes">
+				Show example
+			</aside>
+		</section>
+
+		<section>
+			<h3>Automatic imports from @types</h3>
+
+			<p>tsserver will automatically search and try to import from @types</p>
+			<aside class="notes">
+				Show example
+			</aside>
+		</section>
+
+		<section>
+			<h3>Quick Fixes</h3>
+
+			<ul>
+				<li class="fragment">correct references to types of properties</li>
+				<li class="fragment">fix JSDoc types to TS types</li>
+				<li class="fragment">Apply all quick fixes in a file</li>
+			</ul>
+			<aside class="notes">
+				Show example
+			</aside>
+		</section>
+
+		<section>
+			<h3>Outlining with <span>// #region</span> comments</h3>
+
+			<p>Help the IDE identify and track collapsible regions</p>
+		</section>
+
+		<section>
+			<h2><img src="./images/new.png" class="removeFormatting" style="height: 1em"> Compiler Features</h2>
+		</section>
+
+		<section>
+			<h3>JSDoc casting and asserting of types</h3>
+
+			<p class="fragment">The compiler is now aware of inline JSDoc comments used to cast types in JavsScript files</p>
+
+			<p class="fragment">The compiler will validate JSDoc types against usage.</p>
+			<aside class="notes">
+				Show example
+			</aside>
+		</section>
+
+		<section>
+			<h3>Stricter function types</h3>
+
+			<pre><code class="bash">tsc --strictFunctionTypes</code></pre>
+
+			<p class="fragment">(functional type assignment is checked contravariantly)</p>
+			<aside class="notes">
+				Show example and go into detail
+			</aside>
+		</section>
+
+		<section>
+			<h3>Localization for error messages</h3>
+
+			<pre><code class="bash">tsc --locale en-uk</code></pre>
+		</section>
+
+		<section>
+			<h3>... and more!</h3>
+
+			<ul>
+				<li class="fragment">Suppress errors using // @ts-ignore</li>
+				<li class="fragment">Support for JSX fragment</li>
+				<li class="fragment">Speed improvements to --watch</li>
+				<li class="fragment">Strict property initialization checks in classes</li>
+			</ul>
+		</section>
+
+		<section>
+			<h3>Deprecations</h3>
+
+			<ul>
+				<li>Write only references are now considered unused under --noUnusedLocals and --noUnusedParameters</li>
+				<li>In ambient contexts expressions are now disallowed in default exports</li>
+				<li>Uninhabitable type intersections are simplified to "<code>never</code>"</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2><img src="./images/new.png" class="removeFormatting" style="height: 1em"> Language Features</h2>
+		</section>
+
+		<section>
+			<h3>Optional catch binding</h3>
+
+			<pre><code class="typescript" data-trim data-no-escape>
+				function supportsLowSampleRate() {
+					try {
+						const context = new AudioContext();
+						context.createBuffer(2, 9000, 1);
+						return true;
+					}
+					catch {
+						return false;
+					}
+				}
+			</code></pre>
+		</section>
+
+		<section>
+			<h3>Properties named with const-declared symbols</h3>
+
+			<pre><code class="typescript" data-trim data-no-escape>
+				const specialAction = Symbol();
+				const specialValue = Symbol();
+
+				const obj = {
+					[specialAction]() {},
+					[specialValue]: string = 'value'
+				}
+			</code></pre>
+		</section>
+
+		<section>
+			<h3>Numeric Separators</h3>
+
+			<pre><code class="typescript" data-trim data-no-escape>
+				const cost = 1_000_000;
+				const hex = 0xDE_AD_BE_EF;
+				const small = 0.000_000_1
+			</code></pre>
+		</section>
+
+		<section>
+			<h2>Improved Typing</h2>
+		</section>
+
+		<section>
+			<h3>Definite assignment assertions</h3>
+
+			<pre><code class="typescript" data-trim data-no-escape>
+				class {
+					data!: string
+					setData(data: string) {
+						this.data = data;
+					}
+				}
+			</code></pre>
+		</section>
+
+		<section>
+			<h3>Improved type inference for object literals</h3>
+
+			<pre><code class="typescript" data-trim data-no-escape>
+				const obj = test ? { text: "hello" } : {};
+				const s = obj.text;  // string | undefined
+			</code></pre>
+		</section>
+
+		<section>
+			<h3>Inferred type guards</h3>
+
+			<pre><code class="typescript" data-trim data-no-escape>
+				interface A {
+				  x: number;
+				}
+				interface B {
+				  y: string;
+				}
+
+				let q: A | B = ...;
+				if ('x' in q) {
+				  // q: A
+				} else {
+				  // q: B
+				}
+			</code></pre>
+		</section>
+	</div>
+</div>
+
+<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+<script src="node_modules/reveal.js/js/reveal.js"></script>
+<script src="src/index.js"></script>
+
+</body>
+</html>
