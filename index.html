@@ -81,9 +81,9 @@
 		<section>
 			<h3>Extract Function and Extract Method</h3>
 
-			<p>TS language services supports extracting functions and methods from code</p>
+			<img src="./images/extract.png">
 			<aside class="notes">
-				Show example
+				Show example <i>refactor-method.ts</i>
 			</aside>
 		</section>
 
@@ -91,9 +91,6 @@
 			<h3>Automatic imports from @types</h3>
 
 			<p>tsserver will automatically search and try to import from @types</p>
-			<aside class="notes">
-				Show example
-			</aside>
 		</section>
 
 		<section>
@@ -105,14 +102,14 @@
 				<li class="fragment">Apply all quick fixes in a file</li>
 			</ul>
 			<aside class="notes">
-				Show example
+				Show example <i>quickfixes.ts</i>
 			</aside>
 		</section>
 
 		<section>
 			<h3>Outlining with <span>// #region</span> comments</h3>
 
-			<p>Help the IDE identify and track collapsible regions</p>
+			<img src="./images/region.png">
 		</section>
 
 		<section>
@@ -126,7 +123,7 @@
 
 			<p class="fragment">The compiler will validate JSDoc types against usage.</p>
 			<aside class="notes">
-				Show example
+				Show example <i>jsdoc-types.js</i>
 			</aside>
 		</section>
 
@@ -137,14 +134,21 @@
 
 			<p class="fragment">(functional type assignment is checked contravariantly)</p>
 			<aside class="notes">
-				Show example and go into detail
+				Show example <i>strictfuncs.ts</i>
+
+				<p>Basically a function assignment is compatible if their property types are narrower than the original</p>
 			</aside>
 		</section>
 
 		<section>
 			<h3>Localization for error messages</h3>
 
-			<pre><code class="bash">tsc --locale en-uk</code></pre>
+			<pre><code class="bash">tsc --locale ja</code></pre>
+
+			<img src="./images/locale.png">
+			<aside class="notes">
+				Show example build
+			</aside>
 		</section>
 
 		<section>
@@ -162,9 +166,9 @@
 			<h3>Deprecations</h3>
 
 			<ul>
-				<li>Write only references are now considered unused under --noUnusedLocals and --noUnusedParameters</li>
-				<li>In ambient contexts expressions are now disallowed in default exports</li>
-				<li>Uninhabitable type intersections are simplified to "<code>never</code>"</li>
+				<li class="fragment">Write only references are now considered unused under --noUnusedLocals and --noUnusedParameters</li>
+				<li class="fragment">In ambient contexts expressions are now disallowed in default exports</li>
+				<li class="fragment">Uninhabitable type intersections are simplified to "<code>never</code>"</li>
 			</ul>
 		</section>
 
@@ -187,6 +191,8 @@
 					}
 				}
 			</code></pre>
+
+			<p><a href="https://github.com/tc39/proposal-optional-catch-binding">Optional Catch Binding (ECMA Stage 3)</a></p>
 		</section>
 
 		<section>
@@ -209,8 +215,10 @@
 			<pre><code class="typescript" data-trim data-no-escape>
 				const cost = 1_000_000;
 				const hex = 0xDE_AD_BE_EF;
-				const small = 0.000_000_1
+				const small = 0.000_000_1;
 			</code></pre>
+
+			<p><a href="https://github.com/tc39/proposal-numeric-separator">Numerical Seperators (ECMA stage 3)</a></p>
 		</section>
 
 		<section>
@@ -257,6 +265,16 @@
 				  // q: B
 				}
 			</code></pre>
+		</section>
+
+		<section>
+			<h3>TypeScript Releases</h3>
+
+			<ul>
+				<li>2.5 - August 2017</li>
+				<li>2.6 - October 2017</li>
+				<li>2.7 - January 2018</li>
+			</ul>
 		</section>
 	</div>
 </div>
